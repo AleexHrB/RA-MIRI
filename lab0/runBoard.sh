@@ -1,8 +1,8 @@
 #!/bin/bash
 make
 # Define vectors of values for n and m
-n_values=(100 500 1000 1500)
-m_values=(1000)
+n_values=(10 25 50 100)
+m_values=(50)
 
 # Loop through all combinations
 for n in "${n_values[@]}"; do
