@@ -8,7 +8,7 @@ make
 
 for perc in 0.01 0.05 0.10 0.50 1.00
 do
-    for i in $(seq 1 1000)
+    for i in $(seq 1 200)
     do
         echo "Running $i"
         n=100
