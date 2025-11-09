@@ -1,6 +1,6 @@
 
-folder="oneChoiceHundredBins"
-m=100
+folder=$(pwd)
+m=10000
 rm *.txt
 cd ..
 make 
@@ -11,7 +11,7 @@ do
     n=10
     while [ $n -le $((m*m)) ]
     do
-        ./bins $n $m 0.00 >> $folder/oneChoice$n.txt
+        ./bins $n $m 1.00 >> $folder/twoChoice$n.txt
         n=$((10*n))
     done
 done
