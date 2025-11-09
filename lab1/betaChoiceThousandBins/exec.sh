@@ -1,23 +1,21 @@
 
 folder=$(pwd)
-m=10000
+m=1000
 rm *.txt
 cd ..
 make 
 
-
-for perc in 0.01 0.05 0.10 0.50 1.00
+for beta in 0.25 0.5 0.75
 do
-    for i in $(seq 1 200)
+    for i in $(seq 1 1000)
     do
         echo "Running $i"
-        n=100
+        n=10
         while [ $n -le $((m*m)) ]
         do
-            ./bins $n $m 1.00 $perc >> $folder/twoChoice$n-$perc.txt
+            ./bins $n $m $beta >> $folder/betaChoice$n-$beta.txt
             n=$((10*n))
         done
     done
 done
-
 make clean
