@@ -44,6 +44,8 @@ int main(int argc, char** argv) {
         else ++config[binDistr(gen)];
     }
 
-    cout << "i,n" << endl;
-    for (unsigned int i = 0; i < numBins; ++i) cout << i << " " << config[i] << endl;
+    unsigned int max = 0;
+    for (unsigned int i = 0; i < numBins; ++i) max = max > config[i] ? max : config[i];
+    cout << max - float(numBalls)/float(numBins) << endl;
+    //for (unsigned int i = 0; i < numBins; ++i) cout << i << " " << config[i] << endl;
 }
