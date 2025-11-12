@@ -8,7 +8,7 @@ make
 
 for k in 1 2
 do
-    for i in $(seq 1 1000)
+    for i in $(seq 1 200)
     do
         echo "Running $i"
         n=10

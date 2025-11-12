@@ -26,44 +26,44 @@ int main(int argc, char** argv) {
     vector<unsigned int>config(numBins, 0);
 
     unsigned int med = numBins / 2;
-    unsigned int seventyFive = numBins * 3 / 4;
+    unsigned int medVal = 0;
 
     for (unsigned int i = 0; i < numBalls; ++i) {
-
-        unsigned int firstChoice = binDistr(gen);
-        unsigned int secondChoice = binDistr(gen);
-
-        vector<unsigned int>clownFig = config;
-        nth_element(clownFig.begin(), clownFig.begin() + med, clownFig.end());
-
-        bool aboveMedianFirst = config[firstChoice] > clownFig[med];
-        bool aboveMedianSecond = config[secondChoice] > clownFig[med];
-        if (aboveMedianFirst != aboveMedianSecond) {
-            if (aboveMedianFirst) ++config[secondChoice];
-            else ++config[firstChoice];
+        if (i > med) {
+            nth_element(config.begin(), config.begin() + med, config.end());
+            medVal = config[med];
         }
 
-        else if (k == 2) {
-            nth_element(clownFig.begin(), clownFig.begin() + seventyFive, clownFig.end());
-            bool aboveSeventyFiveFirst = config[firstChoice] > clownFig[seventyFive];
-            bool aboveSeventyFiveSecond = config[secondChoice] > clownFig[seventyFive];
+        unsigned int firstBin = binDistr(gen);
+        unsigned int secondBin = binDistr(gen);
+        bool firstChoice = config[firstBin] < medVal;
+        bool secondChoice = config[secondBin] < medVal;
 
-            if (aboveSeventyFiveFirst != aboveSeventyFiveSecond) {
-                if (aboveSeventyFiveFirst) ++config[secondChoice];
-                else ++config[firstChoice];
+        if (firstChoice == secondChoice) {
+
+            if (k == 2) {
+                vector<unsigned int>clownFig(med);
+                for (unsigned int i = 0; i < med ; ++i) clownFig[i] = config[i + med*(not firstChoice)];
+                nth_element(clownFig.begin(), clownFig.begin() + numBins/4, clownFig.end());
+                firstChoice = config[firstBin] < clownFig[numBins/4];
+                secondChoice = config[secondBin] < clownFig[numBins/4];
+
+                if (firstChoice == secondChoice) {
+                    firstChoice = distr(gen) < 0.50f;
+                    secondChoice = not firstChoice;
+                }
+            
             }
 
             else {
-                if (distr(gen) < 0.50f) ++config[firstChoice];
-                else ++config[secondChoice];
+                firstChoice = distr(gen) < 0.50f;
+                secondChoice = not firstChoice;
             }
         }
 
-        else {
-            if (distr(gen) < 0.50f) ++config[firstChoice];
-            else ++config[secondChoice];
-        }
 
+        if (firstChoice) ++config[firstBin];
+        else ++config[secondBin];
     }
 
     unsigned int max = 0;
