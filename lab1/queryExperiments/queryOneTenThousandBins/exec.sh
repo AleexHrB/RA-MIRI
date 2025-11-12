@@ -1,6 +1,6 @@
 
 folder=$(pwd)
-m=100
+m=3001
 rm *.txt
 cd ..
 make 
@@ -8,13 +8,13 @@ make
 
 for k in 1 2
 do
-    for i in $(seq 1 1000)
+    for i in $(seq 1 200)
     do
         echo "Running $i"
         n=10
         while [ $n -le $((m*m)) ]
         do
-            ./bins $n $m $k >> $folder/twoChoice$n.txt
+            ./bins $n $m $k >> $folder/experiment$n-$k.txt
             n=$((10*n))
         done
     done
