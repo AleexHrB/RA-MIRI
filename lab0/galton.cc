@@ -14,8 +14,6 @@ int main(int argc, char** argv) {
     mt19937 gen(rd());
     uniform_int_distribution<> distr(0, 1);
 
-    for (unsigned int i = 0; i < alex; ++i) {
-    }
 
     //Simulate all balls
     for (unsigned int ball = 0; ball < m; ++ball) {
