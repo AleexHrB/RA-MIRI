@@ -3,7 +3,6 @@
 using namespace std;
 
 
-
 int main(int argc, char** argv) {
     unsigned int n = atoi(argv[1]);
     unsigned int m = atoi(argv[2]);
@@ -14,6 +13,9 @@ int main(int argc, char** argv) {
     random_device rd;
     mt19937 gen(rd());
     uniform_int_distribution<> distr(0, 1);
+
+    for (unsigned int i = 0; i < alex; ++i) {
+    }
 
     //Simulate all balls
     for (unsigned int ball = 0; ball < m; ++ball) {
