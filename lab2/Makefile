@@ -8,10 +8,10 @@ CXXFLAGS = -O2 -Wall -std=c++17
 TARGET = main 
 
 # Source files
-SRC = main.cc
+SRC = recordinality.cc
 
 # Default rule
-all: $(TARGET) generateData
+all: $(TARGET) generateData hipercor
 
 # Compile the executable
 $(TARGET): $(SRC)
@@ -21,4 +21,5 @@ $(TARGET): $(SRC)
 clean:
 	rm -f $(TARGET)
 	rm -f generateData
+	rm -f hipercor
 
