@@ -1,5 +1,5 @@
 make clean
-make hipercor
+make 
 rm *.txt
 f="datasets/dracula.txt"
 echo $f
@@ -7,12 +7,12 @@ newf=$(basename "$f")
 for i in $(seq 1 500)
 do
     echo $i
-    for b in $(seq 4 14)
+    for b in $(seq 100 100 1200)
     do
         #./hipercor $b < $f >> $newf
-        printf "$(./hipercor $b < $f), " >> $newf
+        printf "$(./main $b < $f), " >> $newf
     done
-    printf "$(./hipercor 15 < $f) \n" >> $newf
+    printf "$(./main $b < $f) \n" >> $newf
 done
 
 f="datasets/quijote.txt"
@@ -21,13 +21,13 @@ newf=$(basename "$f")
 for i in $(seq 1 500)
 do
     echo $i
-    for b in $(seq 4 14)
+    for b in $(seq 100 100 1200)
     do
         #./hipercor $b < $f >> $newf
-        printf "$(./hipercor $b < $f), " >> $newf
+        printf "$(./main $b < $f), " >> $newf
     done
-    printf "$(./hipercor 15 < $f) \n" >> $newf
+    printf "$(./main $b < $f) \n" >> $newf
 done
 
-mv *.txt hyperlogFixedBook
+mv *.txt recordFixedBook
 make clean
