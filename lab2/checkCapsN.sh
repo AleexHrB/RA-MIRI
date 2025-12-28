@@ -1,11 +1,10 @@
 make clean
 make
 rm *.txt
-cd synthethicn
+cd synthethicN
 rm *Solution*
 cd ..
-
-for f in $(ls synthethicn/*.txt)
+for f in $(ls synthethicN/*.txt)
 do
     echo $f
     newf=$(basename -- "$f" .txt)
@@ -13,13 +12,12 @@ do
     do
         echo $i
         newName="${newf}SolutionHyper.txt"
-        ./hipercor 5 < $f >> $newName
+        ./hipercor 7 < $f >> $newName
     done
     echo "==========================="
 done
 
-
-for f in $(ls synthethicn/*.txt)
+for f in $(ls synthethicN/*.txt)
 do
     echo $f
     newf=$(basename -- "$f" .txt)
@@ -27,11 +25,9 @@ do
     do
         echo $i
         newName="${newf}SolutionRecord.txt"
-        ./main 32 < $f >> $newName
+        ./main 128 < $f >> $newName
     done
     echo "==========================="
 done
-
-
-mv *.txt synthethicn
+mv *.txt synthethicN
 make clean
